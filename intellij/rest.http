@@ -1,0 +1,4 @@
+GET http://blog.daum.net
+Cookie: key=value
+
+###
