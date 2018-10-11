@@ -49,3 +49,27 @@ Content-Type: text/html; charset=UTF-8
 ```
 
 이런식으로 아래 코드 하이라이팅까지 돼서 간단하게 보기 좋은 모양으로 나옴
+
+
+POST 요청은 뭐 이런식(다른 메소드도 예상한바대로 쓰심되고)
+```
+POST http://blog.daum.net
+```
+
+쿠키를 실어보내고 싶으면
+```
+POST http://blog.daum.net
+Cookie: key=value
+```
+
+요청했을때 로그도 쌓이고 있는데 경로는
+```
+{PROJECT_ROOT}/.idea/httpRequest/
+```
+
+
+스프링 사용시 컨트롤러에 이 .http 를 자동 생성해주는 기능이 있음(신박)
+```
+컨트롤러 어노테이션 옆에 스프링 빈 모양이 있는곳 클릭해주면 생성 옵션이 나옴.. 신기~~
+```
+
