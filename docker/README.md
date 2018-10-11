@@ -20,8 +20,8 @@ docker -v
 
 docker run -t -i ubuntu:14.04
 ```
-	ctrl + D 그냥 종료
-	ctrl + P, Q 컨테이너 실행은 그대로 두고 쉘에서만 빠져나옴
+ctrl + D 그냥 종료
+ctrl + P, Q 컨테이너 실행은 그대로 두고 쉘에서만 빠져나옴
 ```
 
 docker pull centos:7
