@@ -318,7 +318,11 @@ query Hero($episode: Episode, $withFriends: Boolean!) {
 ## Mutations
 대부분의 graphQL 의 논의점은 데이터 패칭에 맞춰져 있지만,
 모든 완성된 데이터 플랫폼에서는 서버사이드 데이터도 잘 수정하는 방법이 필요로한다.
-REST 환경에서 어떤 요청이 어떤 사이드 이팩트로
+REST 환경에서 몇몇의 요청은 서버에서 사이드 이펙트를 유발할수도 있지만,
+데이터 수정시 GET 요청을 사용하지 않는게 컨벤션이다. graphql 도 이와 비슷한데..~
+
+그러니까 아무튼 업데이트를 위한 키워드이다.
+
 
 ```
 mutation CreateReviewForEpisode($ep: Episode!, $review: ReviewInput!) {
@@ -351,11 +355,40 @@ mutation CreateReviewForEpisode($ep: Episode!, $review: ReviewInput!) {
 }
 ```
 
+### 이 사이트에서는 이런식으로 queryQL 쿼리를 날려 볼 수 있다.
+https://www.predic8.de/fruit-shop-graphql?query=mutation%20createSomething%20%7B%0A%20%20addCategory(id%3A%206%2C%20name%3A%20%22Green%20Fruits%22%2C%20products%3A%20%5B8%2C%202%2C%203%5D)%20%7B%0A%20%20%20%20name%0A%20%20%20%20products%20%7B%0A%20%20%20%20%20%20name%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D%0A&operationName=createSomething
 
 
 
 
+## Scheme and Types
 
+### Type System
+아래와 같이 그냥 암것도 선언안하고 기술할 수 있고
+```
+{
+  hero {
+    name
+    appearsIn
+  }
+}
+```
+
+이렇게 hero 데이터에 name, appearsIn 에 타입을 정해서 기술 할수 있다.
+```
+{
+  "data": {
+    "hero": {
+      "name": "R2-D2",
+      "appearsIn": [
+        "NEWHOPE",
+        "EMPIRE",
+        "JEDI"
+      ]
+    }
+  }
+}
+```
 
 
 
