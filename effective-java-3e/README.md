@@ -116,6 +116,33 @@ NutritionFacts food = new NutritionFacts.Builder(200, 8)
 
 ### 3. private 생성자나 열거 타입으로 싱글턴임으로 보증하라
 
+싱글턴은 무상태 객체나 설계상 유일해야하는 시스템 컴포넌트에서 사용
+
+생성자를 private 로 놓아 생성자를 감춰버리고 public static 멤버를 남겨두는 방식을 취한다.
+```
+public class Elvis {
+    public static final Elvis INSTANCE = new Elvis();
+    private Elvis() { ... }
+
+    public void leaveTheBuiling() { ... }
+}
+```
+위 방법은 전체 시스템에서 딱 한개 밖에 없는 객체인것을 의미하지만, 리플렉션 기술로 무마될 수 있다.
+
+정적 팩토리 방식의 싱글톤도 있다.
+```
+public class Elvis {
+    private static final Elvis INSTANCE = new Elvis();
+    private Elvis() { ... }
+    public static Elvis getInstance() { return INSTANCE; }
+
+    public void leaveTheBuilding() { ... }
+}
+
+```
+이것도 위에 있는 예제와 동일한 기능을 하겠지만 싱글턴이 아니게 바꾸기 편하다.
+
+
 ### 4. 인스턴스화를 막으려거든 private 생성자를 사용하라
 
 ### 5. 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라
